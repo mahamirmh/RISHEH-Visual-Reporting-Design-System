@@ -1,0 +1,4 @@
+import {describe,it,expect} from "vitest";import {parseReport} from "../src/schema.js";import {chartSvg} from "../src/chart-svg.js";
+const report={schemaVersion:"1.0",id:"r",title:"Report",locale:"en",summary:"",generatedAt:"2026-10-28",sources:[],blocks:[]};
+describe("Untrusted input validation",()=>{it("accepts typed report",()=>expect(parseReport(report).id).toBe("r"));it("rejects extra keys",()=>expect(()=>parseReport({...report,unexpected:true})).toThrow());it("rejects malformed blocks",()=>expect(()=>parseReport({...report,blocks:[{id:"x",kind:"unknown"}]})).toThrow());});
+describe("Chart asset safety",()=>{it("escapes HTML in labels",()=>{const svg=chartSvg({id:"x",kind:"bar",rows:[{label:"<script>",n:4}],xKey:"label",yKey:"n"});expect(svg).not.toContain("<script>");expect(svg).toContain("&lt;script&gt;");});it("rejects negative pie data",()=>expect(()=>chartSvg({id:"x",kind:"pie",rows:[{name:"A",n:-1}],xKey:"name",yKey:"n"})).toThrow());});

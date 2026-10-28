@@ -19,7 +19,8 @@ export function validateReport(report:Report):Issue[]{
   ids.add(b.id);
   if(!kinds.includes(b.kind))issues.push({path:p+".kind",message:"Unsupported kind"});
   if(["bar","line","pie","table"].includes(b.kind)&&!b.rows?.length)issues.push({path:p+".rows",message:"Data rows required"});
-  if(["bar","line","pie"].includes(b.kind)&&(!b.xKey||!b.yKey||!b.rows?.every(r=>typeof r[b.yKey!] === "number" && Number.isFinite(r[b.yKey!] as number))))issues.push({path:p,message:"Charts require numeric yKey and xKey"});
+  if(["bar","line","pie"].includes(b.kind)&&(!b.xKey||!b.yKey||!b.rows?.every(r=>r[b.xKey!] !== undefined && typeof r[b.yKey!] === "number" && Number.isFinite(r[b.yKey!] as number))))issues.push({path:p,message:"Charts require numeric yKey and xKey"});
+  if(b.kind==="pie" && b.rows?.length && b.yKey && (b.rows.some(r=>typeof r[b.yKey!] === "number" && (r[b.yKey!] as number)<0)||b.rows.reduce((sum,r)=>sum+(typeof r[b.yKey!] === "number" ? r[b.yKey!] as number : 0),0)<=0))issues.push({path:p,message:"Pie chart requires nonnegative parts and positive total"});
   if(["flow","timeline"].includes(b.kind)&&!b.steps?.length)issues.push({path:p+".steps",message:"Steps required"});
   for(const s of b.sourceIds??[])if(!sources.has(s))issues.push({path:p+".sourceIds",message:"Unknown source: "+s});
  }
