@@ -12,7 +12,7 @@ for (const doc of docs) {
   const full = resolve(root,doc);
   if (!existsSync(full)) { errors.push('Missing document: '+doc); continue; }
   const content = read(doc);
-  for (const m of content.matchAll(/!?\\[[^\\]]*\\]\\(([^)]+)\\)/g)) {
+  for (const m of content.matchAll(/!?\[[^\]]*\]\(([^)]+)\)/g)) {
     const target = m[1].split('#')[0].split('?')[0];
     if (!target || /^(https?:|mailto:|data:)/.test(target)) continue;
     if (!existsSync(resolve(dirname(full), decodeURIComponent(target)))) errors.push('Broken link in '+doc+': '+target);
@@ -22,16 +22,16 @@ for (const id of ids) {
   const p = 'assets/examples/'+id+'.svg';
   if (!existsSync(resolve(root,p))) { errors.push('Missing SVG: '+p); continue; }
   const s = read(p);
-  if (!/<svg\\b/.test(s) || !/<\\/svg>\\s*$/.test(s)) errors.push('Invalid SVG wrapper: '+p);
+  if (!/<svg\b/.test(s) || !/<\/svg>\s*$/.test(s)) errors.push('Invalid SVG wrapper: '+p);
   if (!/viewBox="0 0 900 550"/.test(s)) warnings.push('Nonstandard viewBox: '+p);
-  if (!/<title\\b/.test(s) || !/<desc\\b/.test(s)) errors.push('Missing accessible title/description: '+p);
-  if (/&(?!amp;|lt;|gt;|quot;|apos;|#\\d+;|#x[0-9a-f]+;)/i.test(s)) errors.push('Potential unescaped ampersand: '+p);
+  if (!/<title\b/.test(s) || !/<desc\b/.test(s)) errors.push('Missing accessible title/description: '+p);
+  if (/&(?!amp;|lt;|gt;|quot;|apos;|#\d+;|#x[0-9a-f]+;)/i.test(s)) errors.push('Potential unescaped ampersand: '+p);
 }
 const academy = read('docs/ACADEMY_FA.md');
 const glossary = read('docs/GLOSSARY_FA.md');
 const atlas = read('docs/VISUAL_ATLAS_FA.md');
-const lessons = [...academy.matchAll(/^## درس \\d+ — /gm)].length;
-const entries = [...glossary.matchAll(/^## [۰-۹]+\\. /gm)].length;
+const lessons = [...academy.matchAll(/^## درس \d+ — /gm)].length;
+const entries = [...glossary.matchAll(/^## [۰-۹]+\. /gm)].length;
 if (lessons !== 10) errors.push('Expected 10 lessons, found '+lessons);
 if (entries !== 26) errors.push('Expected 26 glossary entries, found '+entries);
 for (const id of ids) {
