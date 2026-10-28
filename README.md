@@ -54,6 +54,15 @@ npm run build
 
 [نمونه گزارش](examples/sample-report.json) · [توکن‌های طراحی](tokens/tokens.json) · [قواعد انتخاب نمودار](docs/VISUALIZATION_RULES.md)
 
+### فازهای ۴ تا ۶
+
+- خروجی نمودارها به‌صورت تصویر در PDF و DOCX (نیازمند آزمون اجرایی)
+- تنظیم فونت Unicode برای PDF فارسی با گزینه `fontPath`
+- دمو React با Vite و آزمون Playwright برای دسکتاپ و موبایل
+- گردش کار CI برای Build، تست واحد و آزمون مرورگر
+
+**[راهنمای اجرا و کنترل کیفیت فازهای ۴ تا ۶](docs/PHASES_4_6.md)**
+
 ### محدودیت‌های فعلی
 **این نسخه Foundation/MVP است و هنوز Production-ready تأیید نشده.** PDF فعلاً نمودارها را به‌صورت داده متنی حفظ می‌کند؛ شکل‌دهی فارسی و فونت RTL در PDF باید تکمیل و تست شود. CI و اجرای تست‌ها هنوز تأیید نشده‌اند. هیچ عدد نمایشی نباید به‌عنوان داده واقعی استفاده شود.
 
@@ -85,6 +94,15 @@ npm run build
 ```
 
 Explore the [architecture](docs/ARCHITECTURE.md), [visualization rules](docs/VISUALIZATION_RULES.md), [templates](docs/TEMPLATES.md) and [example report](examples/sample-report.json).
+
+### Phases 4–6
+
+- Rasterized chart images in PDF/DOCX adapters (runtime verification pending)
+- Explicit Unicode font path for Persian PDF exports
+- Vite/React demo with Playwright desktop and mobile checks
+- CI jobs for typecheck, unit tests, build and browser QA
+
+[Phases 4–6 implementation and QA instructions](docs/PHASES_4_6.md)
 
 ### Project status
 **Foundation/MVP, not production-certified.** Persian PDF shaping/font embedding, richer document charts, browser visual regression and verified CI results are pending. Demo values are explicitly synthetic.
