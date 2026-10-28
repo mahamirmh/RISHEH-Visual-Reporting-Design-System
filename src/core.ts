@@ -13,6 +13,8 @@ export function validateReport(report:Report):Issue[]{
  if(!["fa","en"].includes(report.locale))issues.push({path:"locale",message:"Unsupported locale"});
  if(!Number.isFinite(Date.parse(report.generatedAt)))issues.push({path:"generatedAt",message:"Invalid date"});
  const ids=new Set<string>(),sources=new Set(report.sources.map(s=>s.id));
+ if(sources.size!==report.sources.length)issues.push({path:"sources",message:"Duplicate source IDs"});
+ if(report.sources.some(s=>!s.id.trim()||!s.title.trim()))issues.push({path:"sources",message:"Source ID and title required"});
  for(const [i,b] of report.blocks.entries()){
   const p="blocks["+i+"]";
   if(!b.id||ids.has(b.id))issues.push({path:p+".id",message:"Missing or duplicate ID"});
@@ -21,6 +23,8 @@ export function validateReport(report:Report):Issue[]{
   if(["bar","line","pie","table"].includes(b.kind)&&!b.rows?.length)issues.push({path:p+".rows",message:"Data rows required"});
   if(["bar","line","pie"].includes(b.kind)&&(!b.xKey||!b.yKey||!b.rows?.every(r=>r[b.xKey!] !== undefined && typeof r[b.yKey!] === "number" && Number.isFinite(r[b.yKey!] as number))))issues.push({path:p,message:"Charts require numeric yKey and xKey"});
   if(b.kind==="pie" && b.rows?.length && b.yKey && (b.rows.some(r=>typeof r[b.yKey!] === "number" && (r[b.yKey!] as number)<0)||b.rows.reduce((sum,r)=>sum+(typeof r[b.yKey!] === "number" ? r[b.yKey!] as number : 0),0)<=0))issues.push({path:p,message:"Pie chart requires nonnegative parts and positive total"});
+  if(b.kind==="metric" && b.value===undefined)issues.push({path:p+".value",message:"Metric value required"});
+  if(["paragraph","callout"].includes(b.kind) && !b.text?.trim())issues.push({path:p+".text",message:"Text required"});
   if(["flow","timeline"].includes(b.kind)&&!b.steps?.length)issues.push({path:p+".steps",message:"Steps required"});
   for(const s of b.sourceIds??[])if(!sources.has(s))issues.push({path:p+".sourceIds",message:"Unknown source: "+s});
  }
