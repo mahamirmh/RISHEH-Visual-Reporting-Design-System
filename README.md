@@ -7,7 +7,7 @@
 
 **Semantic-first · Evidence-based · RTL-aware · Multi-format**
 
-[فارسی](#فارسی) · [English](#english) · [Architecture](docs/ARCHITECTURE.md) · [Glossary](docs/GLOSSARY_FA.md) · [Skill](skills/risheh-visual-reporting/SKILL.md)
+[📖 آموزش تصویری فارسی](docs/LEARNING_GUIDE_FA.md) · [Illustrated Guide](docs/LEARNING_GUIDE_EN.md) · [فارسی](#فارسی) · [English](#english) · [Architecture](docs/ARCHITECTURE.md) · [Glossary](docs/GLOSSARY_FA.md) · [Skill](skills/risheh-visual-reporting/SKILL.md)
 
 </div>
 
@@ -21,6 +21,16 @@
 - نمایش React با پشتیبانی راست‌به‌چپ و داده جدولی جایگزین نمودار
 - خروجی اولیه PDF و DOCX
 - Design Tokens، فرهنگ اصطلاحات، هشت قالب و Skill
+
+### آموزش تصویری قدم‌به‌قدم
+
+![Learning path](assets/learning-path.svg)
+
+![Visual vocabulary](assets/visual-vocabulary.svg)
+
+![Visualization decision tree](assets/visual-decision-tree.svg)
+
+**[شروع آموزش کامل فارسی](docs/LEARNING_GUIDE_FA.md)** · [چک‌لیست انتشار](docs/RELEASE_CHECKLIST.md)
 
 ### معماری تصویری
 
@@ -59,6 +69,12 @@ npm run build
 - RTL-aware browser rendering and tabular chart fallbacks
 - Baseline PDF and DOCX export adapters
 - Design tokens, bilingual glossary, eight report templates and reusable Skill
+
+### Illustrated learning
+
+![Learning path](assets/learning-path.svg)
+
+Read the [step-by-step English guide](docs/LEARNING_GUIDE_EN.md) and the [release checklist](docs/RELEASE_CHECKLIST.md).
 
 ### Quick start
 
