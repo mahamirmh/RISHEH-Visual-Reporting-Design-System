@@ -1,114 +1,89 @@
 <div align="center">
 
-<img src="assets/architecture.svg" alt="RISHEH Visual Reporting architecture" width="100%" />
+<img src="assets/architecture.svg" alt="نقشه مفهومی سیستم گزارش‌دهی ریشه" width="100%" />
 
 # RISHEH Visual Reporting Design System
-### سیستم طراحی گزارش‌دهی بصری ریشه
+### مرجع آموزشی و ابزار ساخت گزارش بصری برای تیم ریشه
 
-**Semantic-first · Evidence-based · RTL-aware · Multi-format**
+**Learn the language · Design with evidence · Build reusable reports**
 
-[📖 آموزش تصویری فارسی](docs/LEARNING_GUIDE_FA.md) · [Illustrated Guide](docs/LEARNING_GUIDE_EN.md) · [فارسی](#فارسی) · [English](#english) · [Architecture](docs/ARCHITECTURE.md) · [Glossary](docs/GLOSSARY_FA.md) · [Skill](skills/risheh-visual-reporting/SKILL.md)
+[🚀 از اینجا شروع کنید](docs/START_HERE_FA.md) · [📚 آکادمی فارسی](docs/ACADEMY_FA.md) · [📖 واژه‌نامه تشریحی](docs/GLOSSARY_FA.md) · [🧪 تمرین با پاسخ](docs/WORKBOOK_FA.md) · [English guide](docs/LEARNING_GUIDE_EN.md)
 
 </div>
 
-**Release audit:** [گزارش ممیزی فارسی](docs/FINAL_AUDIT_FA.md) · [English audit](docs/FINAL_AUDIT_EN.md) — v1.0.0 release remains blocked until test evidence is collected.
+> **برای تمام اعضای تیم:** برای خواندن بخش آموزشی هیچ دانش برنامه‌نویسی لازم نیست. تمام نمونه‌های آموزشی ساختگی هستند و هیچ اطلاعات مشتری در آن‌ها استفاده نشده است.
 
-## فارسی
+## این مخزن چه کمکی می‌کند؟
 
-**RVRDS** زیرساخت گزارش‌دهی بصری ریشه است. یک مدل میانی مشترک (Report IR) محتوا را از نحوه نمایش جدا می‌کند تا گزارش در React، PDF، Word و ChatGPT ساختاری هماهنگ داشته باشد.
+این مخزن دو هدف دارد: **آموزش دقیق زبان طراحی و گزارش‌دهی** و **ارائه کد قابل استفاده مجدد** برای تولید گزارش در React، PDF و Word. با آن یاد می‌گیریم چه زمانی بریف، بلوپرینت، فلوچارت، نمودار، وایرفریم یا موکاپ لازم است؛ سپس می‌توانیم در پروژه‌های مناسب از ساختار داده و رندرکننده استفاده کنیم.
 
-### قابلیت‌ها
-- مدل داده TypeScript و اعتبارسنجی گزارش و ارجاعات منابع
-- کارت KPI، جدول، نمودار میله‌ای، خطی و دایره‌ای، تایم‌لاین و فلو
-- نمایش React با پشتیبانی راست‌به‌چپ و داده جدولی جایگزین نمودار
-- خروجی اولیه PDF و DOCX
-- Design Tokens، فرهنگ اصطلاحات، هشت قالب و Skill
+## نقشه راه اعضای تیم
 
-### آموزش تصویری قدم‌به‌قدم
+| نقش | مسیر یادگیری | خروجی |
+|---|---|---|
+| تازه‌وارد، مدیر پروژه، محتوا | [شروع](docs/START_HERE_FA.md) → [دوره پایه](docs/ACADEMY_FA.md) | بریف و روایت گزارش |
+| UI/UX و گرافیک | [دوره پایه](docs/ACADEMY_FA.md) → [قواعد نمودار](docs/VISUALIZATION_RULES.md) → [تمرین](docs/WORKBOOK_FA.md) | انتخاب نمایش و چیدمان با دلیل |
+| Frontend و Full-stack | [راهنمای توسعه‌دهنده](docs/DEVELOPER_GUIDE_FA.md) → [نمونه JSON](examples/sample-report.json) | پیاده‌سازی گزارش در پروژه |
+| QA و تحویل | [راهنمای کنترل کیفیت](docs/QA_HANDBOOK_FA.md) | تست و گزارش باگ قابل بازتولید |
 
-![Learning path](assets/learning-path.svg)
+## آموزش با تصویر و مثال
 
-![Visual vocabulary](assets/visual-vocabulary.svg)
+![مسیر یادگیری](assets/learning-path.svg)
 
-![Visualization decision tree](assets/visual-decision-tree.svg)
+![تفاوت نمودار و فرایند](assets/visual-vocabulary.svg)
 
-**[شروع آموزش کامل فارسی](docs/LEARNING_GUIDE_FA.md)** · [چک‌لیست انتشار](docs/RELEASE_CHECKLIST.md)
+![درخت تصمیم انتخاب نمایش](assets/visual-decision-tree.svg)
 
-### معماری تصویری
+**[دوره کامل تشریحی با مثال آوا (محصول خیالی)](docs/ACADEMY_FA.md)**
 
-```mermaid
-flowchart LR
- A[Input Sources] --> B[Report IR]
- B --> C[Validation]
- C --> D[React UI]
- C --> E[PDF]
- C --> F[DOCX]
- C --> G[ChatGPT Skill]
-```
+در دوره، اصطلاحات فقط نام برده نشده‌اند: برای هر مفهوم تعریف، کاربرد، تفاوت با اصطلاحات مشابه و اشتباه رایج آورده شده است.
 
-### نصب و آزمون
+## کاربرد در پروژه‌ها
+
+- گزارش عملکرد و تحلیل محصول: KPI، جدول و نمودار.
+- مستندسازی مسیر کاربر و فرایند: Flowchart و Timeline.
+- طراحی تجربه: Brief، Blueprint، Wireframe، Mockup و Prototype (بخش آموزشی؛ همه این‌ها کامپوننت کدنویسی‌شده در این بسته نیستند).
+- گزارش‌های React و خروجی PDF/DOCX: استفاده از مدل Report IR و رندرکننده‌های مخزن، پس از آزمون در پروژه مقصد.
+
+### مسیر فنی کوتاه
 
 ```bash
 npm install
 npm run check
 npm run build
+npm run demo
 ```
 
-[نمونه گزارش](examples/sample-report.json) · [توکن‌های طراحی](tokens/tokens.json) · [قواعد انتخاب نمودار](docs/VISUALIZATION_RULES.md)
+[راهنمای استفاده در پروژه](docs/DEVELOPER_GUIDE_FA.md) · [مدل داده](src/core.ts) · [نمونه آموزشی](examples/sample-report.json) · [Skill](skills/risheh-visual-reporting/SKILL.md)
 
-### فازهای ۴ تا ۶
+```mermaid
+flowchart LR
+ A[Question & Brief] --> B[Verified Data]
+ B --> C[Report IR]
+ C --> D[Validation]
+ D --> E[React]
+ D --> F[PDF]
+ D --> G[DOCX]
+```
 
-- خروجی نمودارها به‌صورت تصویر در PDF و DOCX (نیازمند آزمون اجرایی)
-- تنظیم فونت Unicode برای PDF فارسی با گزینه `fontPath`
-- دمو React با Vite و آزمون Playwright برای دسکتاپ و موبایل
-- گردش کار CI برای Build، تست واحد و آزمون مرورگر
+## استانداردهای تیم
 
-**[راهنمای اجرا و کنترل کیفیت فازهای ۴ تا ۶](docs/PHASES_4_6.md)**
+**داده معتبر، روایت روشن، نمایش مناسب، RTL صحیح، دسترس‌پذیری و کنترل کیفیت واقعی.** از تصاویر دست‌نویس، حاشیه‌نویسی غیرحرفه‌ای و اعداد ساختگی بدون برچسب استفاده نکنید.
 
-### محدودیت‌های فعلی
-**این نسخه Foundation/MVP است و هنوز Production-ready تأیید نشده.** PDF فعلاً نمودارها را به‌صورت داده متنی حفظ می‌کند؛ شکل‌دهی فارسی و فونت RTL در PDF باید تکمیل و تست شود. CI و اجرای تست‌ها هنوز تأیید نشده‌اند. هیچ عدد نمایشی نباید به‌عنوان داده واقعی استفاده شود.
+## وضعیت فنی و انتشار
+
+**نسخه هنوز Production-ready تأیید نشده است.** وجود کد خروجی PDF/DOCX و تست‌های مرورگر به معنی موفقیت آن‌ها نیست. پیش از استفاده در پروژه مشتری، آزمون Build، مرورگر و کیفیت واقعی PDF فارسی لازم است. [گزارش ممیزی فنی](docs/FINAL_AUDIT_FA.md) و [دفترچه QA](docs/QA_HANDBOOK_FA.md) برای مسئول فنی هستند؛ نقطه شروع آموزشی تیم نیستند.
 
 ---
 
 ## English
 
-**RVRDS** is an evolving, semantic-first visual reporting toolkit. A shared Report Intermediate Representation separates content from platform-specific rendering, making reports easier to validate and reuse across React, PDF, DOCX and ChatGPT.
+**RISHEH Visual Reporting Design System** is both a learning reference for visual communication and a TypeScript/React reporting toolkit. The learning track requires no programming experience; implementation requires integration and verification.
 
-### Features
-- Typed report contract and validation with source reference checks
-- React KPI cards, tables, bar/line/pie charts, timelines and flows
-- RTL-aware browser rendering and tabular chart fallbacks
-- Baseline PDF and DOCX export adapters
-- Design tokens, bilingual glossary, eight report templates and reusable Skill
+**Start:** [English illustrated guide](docs/LEARNING_GUIDE_EN.md) · [Architecture](docs/ARCHITECTURE.md) · [Developer guide (FA)](docs/DEVELOPER_GUIDE_FA.md) · [QA handbook (FA)](docs/QA_HANDBOOK_FA.md).
 
-### Illustrated learning
-
-![Learning path](assets/learning-path.svg)
-
-Read the [step-by-step English guide](docs/LEARNING_GUIDE_EN.md) and the [release checklist](docs/RELEASE_CHECKLIST.md).
-
-### Quick start
-
-```bash
-npm install
-npm run check
-npm run build
-```
-
-Explore the [architecture](docs/ARCHITECTURE.md), [visualization rules](docs/VISUALIZATION_RULES.md), [templates](docs/TEMPLATES.md) and [example report](examples/sample-report.json).
-
-### Phases 4–6
-
-- Rasterized chart images in PDF/DOCX adapters (runtime verification pending)
-- Explicit Unicode font path for Persian PDF exports
-- Vite/React demo with Playwright desktop and mobile checks
-- CI jobs for typecheck, unit tests, build and browser QA
-
-[Phases 4–6 implementation and QA instructions](docs/PHASES_4_6.md)
-
-### Project status
-**Foundation/MVP, not production-certified.** Persian PDF shaping/font embedding, richer document charts, browser visual regression and verified CI results are pending. Demo values are explicitly synthetic.
+**Status:** Educational documentation is available. Code paths for React, PDF and DOCX exist but have not been certified for production deployment. Do not treat sample data as customer data.
 
 ---
 
-<div align="center"><strong>RISHEH Digital · Clarity through evidence and visual structure.</strong></div>
+<div align="center"><strong>RISHEH Digital · Explain clearly. Design deliberately. Verify before delivery.</strong></div>
