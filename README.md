@@ -11,6 +11,8 @@
 
 </div>
 
+**Release audit:** [گزارش ممیزی فارسی](docs/FINAL_AUDIT_FA.md) · [English audit](docs/FINAL_AUDIT_EN.md) — v1.0.0 release remains blocked until test evidence is collected.
+
 ## فارسی
 
 **RVRDS** زیرساخت گزارش‌دهی بصری ریشه است. یک مدل میانی مشترک (Report IR) محتوا را از نحوه نمایش جدا می‌کند تا گزارش در React، PDF، Word و ChatGPT ساختاری هماهنگ داشته باشد.
