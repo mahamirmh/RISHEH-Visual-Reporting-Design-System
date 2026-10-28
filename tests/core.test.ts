@@ -1,0 +1,3 @@
+import {describe,it,expect} from "vitest";import {validateReport,chooseVisualization,type Report} from "../src/core.js";
+const base:Report={schemaVersion:"1.0",id:"sample",title:"Example",locale:"en",summary:"Demo",generatedAt:"2026-10-28T00:00:00Z",sources:[],blocks:[{id:"m1",kind:"metric",value:10}]};
+describe("Report core",()=>{it("accepts a valid report",()=>expect(validateReport(base)).toEqual([]));it("rejects duplicate IDs",()=>expect(validateReport({...base,blocks:[base.blocks[0],base.blocks[0]]}).length).toBeGreaterThan(0));it("rejects missing chart data",()=>expect(validateReport({...base,blocks:[{id:"chart",kind:"bar"}]}).length).toBeGreaterThan(0));it("chooses bar for large proportion sets",()=>expect(chooseVisualization("proportion",8)).toBe("bar"));});
