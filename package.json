@@ -1,0 +1,27 @@
+{
+  "name": "@risheh/visual-reporting",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "build": "tsc -p tsconfig.json",
+    "check": "npm run typecheck && npm run test"
+  },
+  "dependencies": {
+    "@sinclair/typebox": "^0.34.0",
+    "@react-pdf/renderer": "^4.3.0",
+    "docx": "^9.5.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "recharts": "^2.15.0",
+    "ajv": "^8.17.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.8.0",
+    "vitest": "^3.2.0"
+  }
+}
