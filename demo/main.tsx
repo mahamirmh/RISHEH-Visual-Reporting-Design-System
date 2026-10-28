@@ -1,0 +1,1 @@
+import React from "react";import {createRoot} from "react-dom/client";import {ReportView} from "../src/react.js";import {parseReport} from "../src/schema.js";import sample from "../examples/sample-report.json";const root=document.getElementById("root");if(!root)throw new Error("Missing root");createRoot(root).render(<ReportView report={parseReport(sample)}/>);
