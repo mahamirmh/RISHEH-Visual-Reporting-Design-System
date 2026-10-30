@@ -4,9 +4,8 @@
  * and a machine-readable report. Screenshots require human visual approval.
  */
 import { chromium } from '@playwright/test';
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, writeFile, readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { pathToFileURL } from 'node:url';
 
 const ids = 'brief blueprint chart graph diagram flowchart wireframe mockup prototype dashboard kpi scorecard timeline sankey heatmap treemap report-ir genui disclosure hierarchy provenance accessibility rtl tokens visual-qa regression'.split(' ');
 const viewports = [{ name: 'mobile-360', width: 360, height: 800 }, { name: 'mobile-390', width: 390, height: 844 }, { name: 'desktop-1440', width: 1440, height: 900 }];
@@ -20,10 +19,10 @@ try {
     const page = await browser.newPage({ viewport: { width: viewport.width, height: viewport.height }, deviceScaleFactor: 1 });
     for (const id of ids) {
       const file = resolve(root, 'assets/examples', id + '.svg');
-      const url = pathToFileURL(file).href;
       let errors = [];
       try {
-        await page.goto(url, { waitUntil: 'load' });
+        const svgSource = await readFile(file, 'utf8');
+        await page.setContent('<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;padding:0}svg{width:100vw;height:auto;display:block}</style></head><body>' + svgSource + '</body></html>', { waitUntil: 'load' });
         await page.evaluate(() => document.fonts.ready);
         const info = await page.evaluate(() => {
           const svg = document.querySelector('svg');
