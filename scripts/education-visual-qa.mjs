@@ -45,7 +45,7 @@ try {
         if (!info.title || !info.desc) errors.push('Missing accessible title/desc');
         if (info.outside?.length) errors.push('Text outside viewBox: ' + JSON.stringify(info.outside));
         // SVG is rendered at the target viewport width, preserving its native aspect ratio.
-        await page.evaluate(() => { document.documentElement.style.margin = '0'; document.body.style.margin = '0'; const s = document.querySelector('svg'); if (s) { s.style.width = '100vw'; s.style.height = 'auto'; s.style.display = 'block'; } });
+        await page.evaluate(() => { document.documentElement.style.margin = '0'; if (document.body) document.body.style.margin = '0'; const s = document.querySelector('svg'); if (s) { s.style.width = '100vw'; s.style.height = 'auto'; s.style.display = 'block'; } });
         const shot = resolve(output, viewport.name + '-' + id + '.png');
         await page.screenshot({ path: shot, fullPage: true });
         results.push({ id, viewport: viewport.name, screenshot: 'test-results/education-visual/' + viewport.name + '-' + id + '.png', info, errors });
