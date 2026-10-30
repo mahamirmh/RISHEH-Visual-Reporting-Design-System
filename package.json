@@ -10,7 +10,10 @@
     "check": "npm run typecheck && npm run test",
     "test:e2e": "playwright test",
     "demo": "vite demo",
-    "test:release": "npm run check && npm run build && npm run test:e2e"
+    "test:release": "npm run check && npm run build && npm run test:e2e",
+    "qa:education": "node scripts/education-qa.mjs",
+    "qa:visual": "node scripts/education-visual-qa.mjs",
+    "qa:release": "npm run qa:education && npm run qa:visual && npm run check && npm run build && npm run test:e2e"
   },
   "dependencies": {
     "@sinclair/typebox": "^0.34.0",
